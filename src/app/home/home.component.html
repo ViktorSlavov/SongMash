@@ -1,30 +1,14 @@
 <div class="content">
-  <button (click)="login()">
-    Login
-  </button>
-  <button (click)="debug()">
-    Debugger
-  </button>
-  <button (click)="getArtists()">
-    Artists
-  </button>
-  <button (click)="getUser('11130072368')">
-    Get User
-  </button>
-  <button (click)="getUserPlaylists()">
-    Get Playlists
-  </button>
-  <div class="container">
-    <div *ngFor="let playlist of playlists">
-      <div>Name: {{ playlist.name }}</div>
-      <div>Tracks: {{ playlist.tracks.total }}</div>
-      <button (click)="getTracks(playlist.id)">Get Tracks</button>
-    </div>
-    <div *ngFor="let artist of artists">
-      <div>Name: {{ artist.name }}</div>
-      <igx-avatar roundShape="true" [src]="artist.images[0].url">
-      </igx-avatar>
-      <button (click)="getTracks(playlist.id)">Get Tracks</button>
-    </div>
+  <div class="background grayscale"></div>
+  <div class="centered login-button">
+    <igx-icon class="large">play_circle_outline</igx-icon>
+  </div>
+  <div class="buttons">
+    <button igxButton="raised">
+      Explore
+    </button>
+    <button igxButton="raised">
+      Mix
+    </button>
   </div>
 </div>

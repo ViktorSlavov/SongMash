@@ -8,21 +8,23 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
-import { IgxAvatarModule } from 'igniteui-angular';
+import { IgxAvatarModule, IgxButtonModule, IgxIconModule } from 'igniteui-angular';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    IgxAvatarModule
+    IgxAvatarModule,
+    IgxButtonModule,
+    IgxIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

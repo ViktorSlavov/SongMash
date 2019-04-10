@@ -43,4 +43,20 @@ export class SpotifyAPIService {
       }
     });
   }
+
+  getRelatedArtists(artistID: string): Observable<any> {
+    return this.http.get(`${baseUrl}/v1/artists/${artistID}/related-artists`, {
+      headers: {
+        Authorization: `Bearer ${this.authService.accessToken}`
+      }
+    });
+  }
+
+  getArtistAlbums(artistID: string): Observable<any> {
+    return this.http.get(`${baseUrl}/v1/artists/${artistID}/albums`, {
+      headers: {
+        Authorization: `Bearer ${this.authService.accessToken}`
+      }
+    });
+  }
 }

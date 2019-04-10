@@ -14,6 +14,27 @@ export interface PlayList extends NamedRef {
     type: 'playlist';
 }
 
+export interface Track {
+    duration_ms: number;
+    key: number;
+    mode: number;
+    time_signature: number;
+    acousticness: number;
+    danceability: number;
+    energy: number;
+    instrumentalness: number;
+    liveness: number;
+    loudness: number;
+    speechiness: number;
+    valence: number;
+    tempo: number;
+    id: string;
+    uri: string;
+    track_href: string;
+    analysis_url: string;
+    type: string;
+}
+
 export interface Image {
     height: number;
     url: string;

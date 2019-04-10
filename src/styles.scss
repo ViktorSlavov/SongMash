@@ -5,18 +5,34 @@
 /* See: https://www.infragistics.com/products/ignite-ui-angular/angular/components/themes.html */
 @import "~igniteui-angular/lib/core/styles/themes/index";
 
-$primary: #731963 !default;
-$secondary: #ce5712 !default;
+$primary: #000000 !default;
+$secondary: #fffb05 !default;
 
 $app-palette: igx-palette($primary, $secondary);
 
 @include igx-core();
 @include igx-theme($app-palette);
 
+$accent-color-1: igx-color($app-palette, 'primary', 700);
+$accent-color-2: igx-color($app-palette, 'primary', 800);
+$accent-color-3: igx-color($app-palette, 'primary', 900);
+
+$elevation-color: igx-elevations($accent-color-1, $accent-color-2, $accent-color-3);
+
+$elevation-1: igx-elevation($elevation-color, 1);
+$elevation-2: igx-elevation($elevation-color, 2);
+$elevation-3: igx-elevation($elevation-color, 3);
+$elevation-4: igx-elevation($elevation-color, 4);
 
 html, body {
   height: 100%;
 }
 .content p {
   margin: 15px;
+}
+
+.large {
+    font-size: 80px;
+    width: auto;
+    height: auto;
 }
