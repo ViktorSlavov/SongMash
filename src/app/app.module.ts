@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { IgxAvatarModule, IgxButtonModule, IgxIconModule } from 'igniteui-angular';
+import { HiveHexagonDirective } from './components/hexagon/hexagon.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { IgxAvatarModule, IgxButtonModule, IgxIconModule } from 'igniteui-angula
     HomeComponent,
     LoginComponent,
     ProfileComponent,
+    HiveHexagonDirective,
   ],
   imports: [
     BrowserModule,
