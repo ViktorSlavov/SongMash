@@ -1,0 +1,21 @@
+<div class="criteria__container">
+  <div *ngFor="let key of keys" class="criteria-item">
+    <app-hexagon [side]="24">
+      <igx-icon>
+        {{ criteriaMap[key].low }}
+      </igx-icon>
+    </app-hexagon>
+    <label igxLabel for="{{key}}">{{ key.toUpperCase() }}</label>
+    <igx-slider id="{{key}}" [minValue]="0" [maxValue]="100" [(ngModel)]="criteria[key]">
+    </igx-slider>
+    <app-hexagon [side]="24">
+      <igx-icon>
+        {{ criteriaMap[key].high }}
+      </igx-icon>
+    </app-hexagon>
+  </div>
+</div>
+<div class="criteria__buttons">
+  <button [routerLink]="['/artists']" igxButton="raised">Artists</button>
+  <button [routerLink]="['/finalize']" igxButton="raised">Finalize</button>
+</div>

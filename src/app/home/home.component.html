@@ -1,7 +1,10 @@
 <div class="content">
-  <div class="background grayscale"></div>
-  <div hiveHexagon class="centered login-button">
-    <igx-icon class="large">play_circle_outline</igx-icon>
+  <div style="width: 100%; height: 460px; display: flex; justify-content: center">
+    <app-hexagon-shape [formation]="SHAPES.FLOWER">
+      <app-hexagon *ngFor="let item of items" [side]="item.side" [color]="item.color">
+      </app-hexagon>
+    </app-hexagon-shape>
+    
   </div>
   <div class="buttons">
     <button igxButton="raised">
@@ -9,6 +12,12 @@
     </button>
     <button igxButton="raised">
       Mix
+    </button>
+    <button *ngIf="userIsLogged" igxButton="raised" [routerLink]="['/profile']">
+      Profile
+    </button>
+    <button *ngIf="!userIsLogged" igxButton="raised" [routerLink]="['/login']">
+      Login
     </button>
   </div>
 </div>

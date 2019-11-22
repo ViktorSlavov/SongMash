@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SpotifyAuthService } from '../services/spotify.service';
 import { SpotifyAPIService } from '../services/spotifyapi.service';
-import { PlayList, ArtistRef } from '../common';
+import { PlayList, ArtistRef, HexagonShapeFormations, ArtistInfo } from '../common';
 
 
 const userId = '11130072368';
@@ -12,9 +12,40 @@ const userId = '11130072368';
 })
 export class HomeComponent {
 
-  public artists: ArtistRef[] = [];
+  public userIsLogged = false;
+  public SHAPES = HexagonShapeFormations;
+  public artists: ArtistInfo[] = [];
   public playlists: PlayList[] = [];
   public tracks: any[] = [];
+  public items: { initial: string; side: number, color: string }[] = [{
+    initial: 'M',
+    side: 80,
+    color: '#fffc02'
+  }, {
+    initial: 'E',
+    side: 80,
+    color: '#fffc02'
+  }, {
+    initial: 'M',
+    side: 80,
+    color: '#fffc02'
+  }, {
+    initial: 'E',
+    side: 80,
+    color: '#fffc02'
+  }, {
+    initial: 'N',
+    side: 80,
+    color: '#fffc02'
+  },  {
+    initial: 'C',
+    side: 80,
+    color: '#fffc02'
+  },  {
+    initial: 'A',
+    side: 80,
+    color: '#fffc02'
+  }];
 
   constructor(private spotifyService: SpotifyAuthService, private apiService: SpotifyAPIService) {
   }
@@ -24,13 +55,10 @@ export class HomeComponent {
   }
 
   debug() {
-    debugger;
   }
 
   getArtists() {
-    this.apiService.getTopArtists().subscribe(data => {
-      this.artists = data.items;
-    });
+    this.apiService.getTopArtists();
   }
 
   getUser(id: string) {
@@ -46,7 +74,6 @@ export class HomeComponent {
 
   getTracks(playlistId: string) {
     this.apiService.getTracks(playlistId).subscribe(data => {
-      debugger;
       this.tracks = data;
     });
   }

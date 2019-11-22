@@ -1,0 +1,49 @@
+:host {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+    background: black;
+    color: white;
+    margin: 12px 0px;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 1px -2px 11px #fffc027b;
+}
+
+img {
+    max-height: 100%;
+    width: 10%;
+    flex-grow: 20%;
+}
+.artist__image {
+    width: 15%;
+}
+.artist__label {
+    display: flex;
+    flex-flow: column;
+    width: 70%;
+    padding: 4px 12px;
+}
+
+.artist__name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fffc02;
+}
+
+.artist__genre {
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 600px;
+    overflow: hidden;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.artist__add {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    color: #fffc02;
+}

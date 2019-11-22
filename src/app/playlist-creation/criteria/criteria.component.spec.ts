@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HiveHexagonComponent } from './hexagon.component';
+import { CriteriaComponent } from './criteria.component';
 
-describe('HiveHexagonComponent', () => {
-  let component: HiveHexagonComponent;
-  let fixture: ComponentFixture<HiveHexagonComponent>;
+describe('CriteriaComponent', () => {
+  let component: CriteriaComponent;
+  let fixture: ComponentFixture<CriteriaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HiveHexagonComponent ]
+      declarations: [ CriteriaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HiveHexagonComponent);
+    fixture = TestBed.createComponent(CriteriaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

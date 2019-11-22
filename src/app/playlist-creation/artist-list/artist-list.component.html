@@ -1,0 +1,9 @@
+<div class="artist-selected">
+  <app-hex-avatar *ngFor="let artist of artists | async | artistFilter:state.selectedItems" [image]="artist.images[0].url" width="80px" height="80px">
+  </app-hex-avatar>
+</div>
+<div class="artist-list">
+  <app-artist *ngFor="let artist of artists | async;" [artist]="artist">
+  </app-artist>
+</div>
+<button [routerLink]="['/criteria']" igxButton="raised">Criteria</button>

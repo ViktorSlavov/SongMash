@@ -1,0 +1,69 @@
+<html>
+<style>
+    .hexagon {
+        display: block;
+        width: 138.56px;
+    }
+
+    .hexagon>* {
+        box-sizing: border-box;
+    }
+
+    .hexagon__core {
+        text-align: center;
+        width: 138.56px;
+        height: 80px;
+        background-color: black;
+    }
+
+    .hexagon__top {
+        height: 40px;
+        width: 138.56px;
+        border-left: 69.28px solid transparent;
+        border-right: 69.28px solid transparent;
+        border-bottom: 40px solid black;
+    }
+
+    .hexagon__bottom {
+        height: 40px;
+        width: 138.56px;
+        border-left: 69.28px solid transparent;
+        border-right: 69.28px solid transparent;
+        border-top: 40px solid black;
+    }
+
+    .mini {
+        transform: scale(0.90);
+        
+    }
+</style>
+
+<head>
+    <title>Hexagon</title>
+</head>
+
+<body>
+    <div class="hexagon">
+        <div class="hexagon__top">
+
+        </div>
+        <div class="hexagon__core">
+            <div class="hexagon mini">
+                <div class="hexagon__top">
+
+                </div>
+                <div class="hexagon__core">
+
+                </div>
+                <div class="hexagon__bottom">
+
+                </div>
+            </div>
+        </div>
+        <div class="hexagon__bottom">
+
+        </div>
+    </div>
+</body>
+
+</html>

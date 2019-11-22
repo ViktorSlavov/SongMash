@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { appCredentials } from './appCredentials';
+import { take } from 'rxjs/operators';
 
 interface StorageToken {
   state: string;
@@ -8,55 +9,54 @@ interface StorageToken {
   expires: Date;
 }
 
+interface SpotifyToken {
+  token: string;
+  refreshToken: string;
+}
+
 interface AppCredentials {
   id: string;
   secret: string;
 }
 
-const spotifyUrl = 'https://accounts.spotify.com/';
 @Injectable({
   providedIn: 'root'
 })
 export class SpotifyAuthService {
 
-
   public get accessToken() {
     if (!this._accessToken) {
       const token: StorageToken = JSON.parse(localStorage.getItem('spotify_access_token'));
-      this._accessToken = new Date(token.expires).getTime() > new Date().getTime() ? token.token : null;
+      this._accessToken = token.token;
     }
     return this._accessToken;
   }
   // tslint:disable-next-line:variable-name
   private _accessToken = '';
   private stateToken = '';
-  private endpoints = {
-    authorize: `${spotifyUrl}authorize`
-  };
   private client: AppCredentials = appCredentials;
 
-  public setAccessToken(val: StorageToken) {
+  public setAccessToken(val: SpotifyToken) {
     this._accessToken = val.token;
     localStorage.setItem('spotify_access_token', JSON.stringify(val));
   }
 
   constructor(private http: HttpClient) { }
 
-  login() {
-    this.stateToken = parseFloat(Math.random().toFixed(5)).toString(36).substring(7);
-    const headers = {
-      client_id: this.client.id,
-      response_type: 'token',
-      redirect_uri: 'http://localhost:4200/profile',
-      state: this.stateToken,
-      scope: `user-top-read playlist-modify-public`
-    };
-    const urlParams = Object.keys(headers).map((header) => `${header}=${headers[header]}`).join('&');
+  handleUrl(url: string) {
+    const queryParams = url.split('access_token=')[1];
+    const refreshToken = queryParams.split('&')[1].split('refresh_token=')[1];
+    const token = queryParams.split('&')[0];
+    this.setAccessToken({
+      token,
+      refreshToken
+    });
+  }
 
-    const requestUrl = `${this.endpoints.authorize}?${urlParams}`;
-    window.open(requestUrl);
-    this.http.get(requestUrl).subscribe((data) => {
-      console.log(data);
+  login() {
+    this.http.get('http://localhost:3000/login').pipe(take(1)).subscribe((e: { url: string, state: string }) => {
+      document.cookie = encodeURIComponent('spotify_auth_state') + '=' + encodeURIComponent(e.state) + ';sameSite=NONE';
+      window.location.href = e.url;
     });
   }
 }

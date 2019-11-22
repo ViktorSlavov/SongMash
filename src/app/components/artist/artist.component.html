@@ -1,0 +1,16 @@
+<div class="artist__image">
+  <app-hex-avatar [image]="artist.images[0].url" width="80px" height="80px"></app-hex-avatar>
+</div>
+<div class="artist__label">
+  <div class="artist__name">
+    {{ artist.name }}
+  </div>
+  <div class="artist__genre">
+    {{ artist.genres }}
+  </div>
+</div>
+<div class="artist__add">
+  <button igxButton="icon" (click)="toggle()">
+    <igx-icon color="#fffc02">{{ selected ? 'remove' : 'add' }}</igx-icon>
+  </button>
+</div>

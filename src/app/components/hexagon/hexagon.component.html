@@ -1,3 +1,5 @@
-<div class="hexagon">
-  <ng-content></ng-content>
+<div #hexContainer class="hexagon">
+  <div #hexCore class="hexagon__core">
+      <ng-content></ng-content>
+  </div>
 </div>

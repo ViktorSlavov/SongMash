@@ -8,8 +8,16 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
-import { IgxAvatarModule, IgxButtonModule, IgxIconModule } from 'igniteui-angular';
-import { HiveHexagonDirective } from './components/hexagon/hexagon.component';
+import { IgxAvatarModule, IgxButtonModule, IgxIconModule, IgxForOfModule, IgxSliderModule } from 'igniteui-angular';
+import { HiveHexagonComponent } from './components/hexagon/hexagon.component';
+import { HexagonShapeComponent } from './components/hexagon-shape/hexagon-shape.component';
+import { CallbackComponent } from './callback/callback.component';
+import { ArtistComponent } from './components/artist/artist.component';
+import { ArtistListComponent } from './playlist-creation/artist-list/artist-list.component';
+import { CriteriaComponent } from './playlist-creation/criteria/criteria.component';
+import { HexAvatarComponent } from './components/hex-avatar/hex-avatar.component';
+import { ArtistFilterPipe } from './artist-filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +25,14 @@ import { HiveHexagonDirective } from './components/hexagon/hexagon.component';
     HomeComponent,
     LoginComponent,
     ProfileComponent,
-    HiveHexagonDirective,
+    HiveHexagonComponent,
+    HexagonShapeComponent,
+    CallbackComponent,
+    ArtistComponent,
+    ArtistListComponent,
+    CriteriaComponent,
+    HexAvatarComponent,
+    ArtistFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -26,7 +41,10 @@ import { HiveHexagonDirective } from './components/hexagon/hexagon.component';
     BrowserAnimationsModule,
     IgxAvatarModule,
     IgxButtonModule,
-    IgxIconModule
+    IgxIconModule,
+    IgxForOfModule,
+    IgxSliderModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
