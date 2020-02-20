@@ -7,10 +7,10 @@ import { OnInit, HostBinding, ElementRef, AfterViewInit, Renderer2, Component, I
 })
 export class HiveHexagonComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('hexContainer', { read: ElementRef })
+  @ViewChild('hexContainer', { read: ElementRef, static: true })
   private hexContainer: ElementRef;
 
-  @ViewChild('hexCore', { read: ElementRef })
+  @ViewChild('hexCore', { read: ElementRef, static: true })
   private hexCore: ElementRef;
 
   /**
