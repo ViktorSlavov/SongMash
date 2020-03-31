@@ -1,3 +1,6 @@
+<h6>
+  Filter your songs by any of the following criteria!
+</h6>
 <div class="criteria__container">
   <div *ngFor="let key of keys" class="criteria-item">
     <app-hexagon [side]="24">
@@ -6,7 +9,7 @@
       </igx-icon>
     </app-hexagon>
     <label igxLabel for="{{key}}">{{ key.toUpperCase() }}</label>
-    <igx-slider id="{{key}}" [minValue]="0" [maxValue]="100" [(ngModel)]="criteria[key]">
+    <igx-slider id="{{key}}" (onValueChange)="handleChange(key, $event)" [type]="sliderType.RANGE" [minValue]="0" [maxValue]="100" [(ngModel)]="criteria[key]">
     </igx-slider>
     <app-hexagon [side]="24">
       <igx-icon>

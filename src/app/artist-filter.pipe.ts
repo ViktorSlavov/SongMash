@@ -8,7 +8,7 @@ import { ArtistInfo } from './common';
 export class ArtistFilterPipe implements PipeTransform {
 
   transform(array: ArtistInfo[], selected: Set<string>): any {
-    if (!selected.size) {
+    if (!selected || !selected.size) {
       return [];
     } else {
       return array.filter(entry => selected.has(entry.id));

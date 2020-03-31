@@ -13,7 +13,7 @@ export class CallbackComponent implements OnInit {
 
   ngOnInit() {
     this.authService.handleUrl(window.location.href);
-    this.router.navigate(['profile']);
+    this.router.navigate(['artists']);
   }
 
 }

@@ -1,3 +1,6 @@
+<h6>
+  Choose the artist you'd like to be part of your playlist!
+</h6>
 <div class="artist-selected">
   <app-hex-avatar *ngFor="let artist of artists | async | artistFilter:state.selectedItems" [image]="artist.images[0].url" width="80px" height="80px">
   </app-hex-avatar>

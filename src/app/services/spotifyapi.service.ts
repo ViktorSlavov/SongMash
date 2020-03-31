@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { SpotifyAuthService } from './spotify.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, ReplaySubject } from 'rxjs';
-import { TopArtistResponse, ArtistInfo, UserDetails } from '../common';
+import { TopArtistResponse, ArtistInfo, UserDetails, CriteriaMap } from '../common';
 
 const baseUrl = `https://api.spotify.com/`;
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,32 @@ export class SpotifyAPIService {
   private _userDetails: UserDetails = null;
   private _topArtists: ArtistInfo[] = [];
 
-  public selectedItems = new Set();
+  public selectedItems: Set<string> = new Set();
+  /**
+   * 
+   */
+  public criteriaMap: CriteriaMap = {
+    acousticness: {
+      max: 100,
+      min: 0
+    },
+    energy: {
+      max: 100,
+      min: 0
+    },
+    danceability: {
+      max: 100,
+      min: 0
+    },
+    valence: {
+      max: 100,
+      min: 0
+    },
+    instrumentalness: {
+      max: 100,
+      min: 0
+    }
+  };
 
   constructor(private authService: SpotifyAuthService, private http: HttpClient) {
     this.topArtists.next(this._topArtists);
@@ -31,6 +57,10 @@ export class SpotifyAPIService {
 
   public topArtists = new ReplaySubject<ArtistInfo[]>(1);
   public userDetails = new ReplaySubject<UserDetails>(1);
+
+  setCriteriaKey(key: string, value: { min: number, max: number }) {
+      this.criteriaMap[key] = value;
+  }
 
   getTopArtists(): void {
     this.http.get<TopArtistResponse>(`${baseUrl}v1/me/top/artists`, this.requestHeader).subscribe((e: TopArtistResponse) => {
@@ -67,5 +97,13 @@ export class SpotifyAPIService {
 
   getArtistAlbums(artistID: string): Observable<any> {
     return this.http.get(`${baseUrl}/v1/artists/${artistID}/albums`, this.requestHeader);
+  }
+
+  createPlaylist(artistIDs: string[], criteria: CriteriaMap, playlistName: string) {
+    debugger;
+    this.http.post('http://localhost:3000/create', { artistIDs, criteria, playlistName }).subscribe((response: any) => {
+      console.log('Response:\n', response);
+      debugger;
+    });
   }
 }

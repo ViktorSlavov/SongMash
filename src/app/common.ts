@@ -117,7 +117,7 @@ export interface UserDetails {
 
 export interface CriteriaMap {
   [key: string]: {
-    high: string;
-    low: string;
+    min: number;
+    max: number;
   };
 }

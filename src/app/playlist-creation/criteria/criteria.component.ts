@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CriteriaMap } from 'src/app/common';
+import { ISliderValueChangeEventArgs, IRangeSliderValue, IgxSliderType } from 'igniteui-angular';
+import { SpotifyAPIService } from 'src/app/services/spotifyapi.service';
 
 @Component({
   selector: 'app-criteria',
@@ -7,6 +8,7 @@ import { CriteriaMap } from 'src/app/common';
   styleUrls: ['./criteria.component.scss']
 })
 export class CriteriaComponent implements OnInit {
+  public sliderType = IgxSliderType;
 
   public criteria = {
     acousticness: 0,
@@ -16,7 +18,7 @@ export class CriteriaComponent implements OnInit {
     valence: 0,
   };
 
-  public criteriaMap: CriteriaMap = {
+  public criteriaMap = {
     acousticness: {
       high: 'spellcheck',
       low: 'text_rotate_vertical'
@@ -43,9 +45,14 @@ export class CriteriaComponent implements OnInit {
     return Object.keys(this.criteria);
   }
 
-  constructor() { }
+  constructor(private spotifyApi: SpotifyAPIService ) { }
 
   ngOnInit() {
+  }
+
+  handleChange(key: string, event: ISliderValueChangeEventArgs) {
+    const currentVal = event.value as IRangeSliderValue;
+    this.spotifyApi.setCriteriaKey(key, { max: currentVal.upper, min: currentVal.lower });
   }
 
 }

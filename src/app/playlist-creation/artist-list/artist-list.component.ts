@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { mockArtists } from './mockData';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { SpotifyAPIService } from 'src/app/services/spotifyapi.service';
+import { ArtistInfo } from 'src/app/common';
 
 @Component({
   selector: 'app-artist-list',
@@ -9,12 +9,12 @@ import { SpotifyAPIService } from 'src/app/services/spotifyapi.service';
   styleUrls: ['./artist-list.component.scss']
 })
 export class ArtistListComponent implements OnInit {
-  public artists = new BehaviorSubject(mockArtists.map(entry => {
-    entry.genres = entry.genres.splice(0, 3);
-    return entry;
-  }));
+  public artists = new Subject<ArtistInfo[]>();
   public selected = [];
-  constructor(public state: SpotifyAPIService) { }
+  constructor(public state: SpotifyAPIService) {
+    this.state.getTopArtists();
+    this.artists = state.topArtists;
+  }
 
   ngOnInit() {
   }

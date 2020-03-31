@@ -12,6 +12,9 @@ $app-palette: igx-palette($primary, $secondary);
 
 @include igx-core();
 @include igx-theme($app-palette);
+@include igx-typography(
+    $font-family: "'Roboto', sans-serif",
+);
 
 $accent-color-1: igx-color($app-palette, 'primary', 700);
 $accent-color-2: igx-color($app-palette, 'primary', 800);
@@ -25,6 +28,7 @@ $elevation-3: igx-elevation($elevation-color, 3);
 $elevation-4: igx-elevation($elevation-color, 4);
 
 html, body {
+  color: $secondary;
   height: 100%;
 }
 .content p {

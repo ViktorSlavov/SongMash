@@ -1,0 +1,26 @@
+<div class="criteria__container">
+
+    <igx-input-group>
+        <label igxLabel for="playlist-name">Playlist Name</label>
+        <input type="text" [(ngModel)]="playlistName" name="playlist-name" igxInput>
+        <igx-suffix (click)="randomizeName()">
+            <igx-icon>360</igx-icon>
+        </igx-suffix>
+    </igx-input-group>
+    <div>
+        <app-hex-avatar *ngFor="let artist of artists | async | artistFilter:spotifyAPI?.selectedItems"
+            [image]="artist.images[0].url" width="80px" height="80px">
+        </app-hex-avatar>
+    </div>
+    <button igxButton="raised" [routerLink]="['/artists']">Edit</button>
+    <div>
+        <ul style="color: yellow">
+            <li *ngFor="let entry of criteria">{{entry}} : {{this.criteriaMap[entry].min}} -
+                {{ this.criteriaMap[entry].max}}</li>
+        </ul>
+    </div>
+    <button igxButton="raised" [routerLink]="['/criteria']">Edit</button>
+
+
+    <button igxButton [disabled]="!playlistName" (click)="submit()">Create!</button>
+</div>
